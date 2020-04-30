@@ -9,6 +9,9 @@
 
 // EXAMPLE SOLUTION CODE:
 class Airplane {
+  /**
+   * @param {string} name
+   */
   constructor(name) {
     this.name = name;
     this.isFlying = false;
@@ -42,6 +45,21 @@ class Airplane {
 
 class Person {
 
+  constructor(name, age){
+    this.name = name;
+    this.age = age;
+    this.stomach = [];
+  }
+  eat(someFood){
+    (this.stomach.length <= 9) ? this.stomach.push(someFood) : false; 
+  }
+  poop() {
+    this.stomach = [];
+  }
+  toString(){
+    return `${this.name}, ${this.age}`
+  }
+
 }
 
 /*
@@ -59,7 +77,25 @@ class Person {
 */
 
 class Car {
-
+  constructor(model, milesPerGallon){
+    this.model = model;
+    this.milesPerGallon = milesPerGallon;
+    this.tank = 0;
+    this.odometer = 0;
+  }
+  fill(gallons) {
+    this.tank += gallons;
+  }
+  drive(distance){
+    if(distance < this.tank * this.milesPerGallon){
+      this.odometer += distance;
+      this.tank -= (distance/this.milesPerGallon);
+    }else {
+      this.odometer += this.tank * this.milesPerGallon;
+      this.tank = 0;
+      return `I ran out of fuel at ${this.odometer} miles!`
+    }
+  }
 }
 
 /*
