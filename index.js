@@ -148,7 +148,15 @@ class Instructor extends Lambdasian {
   grade(object, subject){
     return `${object.name} receives a perfect score on ${subject}`
   }
+  changeGrade(object){
+    let chance = Math.random();
+    let fate = Math.random() * 100;
+    (chance > 0.45) ? object.grade += fate: object.grade -= fate;
+  }
 
+  canGraduate(object){
+    return (object.grade > 70) ? `${object.name} can graduate` : this.changeGrade(object) 
+  }
 }
 
 /*
@@ -172,6 +180,7 @@ class Student extends Lambdasian {
     this.previousBackground = object.previousBackground;
     this.className = object.className;
     this.favSubjects = object.favSubjects;
+    this.grade = 100;
   }
   listSubjects() {
     return `Loving ${this.favSubjects}`
@@ -219,6 +228,9 @@ class ProjectManager extends Instructor {
     - Add a graduate method to a student.
       + This method, when called, will check the grade of the student and see if they're ready to graduate from Lambda School
       + If the student's grade is above a 70% let them graduate! Otherwise go back to grading their assignments to increase their score.
+
+      https://repl.it/@brandonstine/Classes-REPL
+      completed and tested
 */
 
 ///////// END OF CHALLENGE /////////
